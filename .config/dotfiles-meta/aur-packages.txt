@@ -1,0 +1,5 @@
+claude-desktop
+happ-desktop-bin
+wayle-bin
+yay
+yay-debug
