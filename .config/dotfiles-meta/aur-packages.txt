@@ -8,6 +8,7 @@ docker-desktop
 docker-desktop-debug
 google-chrome
 happ-desktop-bin
+notion-app-electron
 spotify
 ticktick
 ticktick-debug

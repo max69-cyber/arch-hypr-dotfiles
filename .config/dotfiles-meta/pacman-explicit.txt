@@ -18,6 +18,7 @@ ghostty
 git
 gnome-calculator
 gnome-calendar
+google-chrome
 grim
 gst-plugin-pipewire
 gvfs
@@ -36,6 +37,7 @@ ly
 mkinitcpio
 nano
 networkmanager
+notion-app-electron
 openssh
 pipewire
 pipewire-alsa
