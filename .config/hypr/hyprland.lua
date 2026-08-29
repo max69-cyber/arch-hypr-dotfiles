@@ -280,6 +280,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(terminal .. " -e env NO_FASTFETCH=1 fish"))  -- terminal without fastfetch banner
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())       -- force-kill an unresponsive window
