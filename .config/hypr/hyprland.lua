@@ -22,11 +22,27 @@
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+-- Fallback for anything not explicitly listed below
 hl.monitor({
     output   = "",
     mode     = "preferred",
     position = "auto",
     scale    = "auto",
+})
+
+-- Laptop panel
+hl.monitor({
+    output   = "eDP-1",
+    mode     = "preferred",
+    position = "1920x0",
+    scale    = 1,
+})
+
+hl.monitor({
+    output   = "HDMI-A-1",
+    mode     = "preferred",
+    position = "0x0",
+    scale    = 1,
 })
 
 
@@ -272,13 +288,24 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlauncher"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+
+-- Switch focus to the other monitor with mainMod + ALT + left/right
+hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ monitor = "+1" }))
+hl.bind(mainMod .. " + ALT + left",  hl.dsp.focus({ monitor = "-1" }))
+
+-- Move the active window to the other monitor with mainMod + ALT + SHIFT + left/right
+hl.bind(mainMod .. " + ALT + SHIFT + right", hl.dsp.window.move({ monitor = "+1" }))
+hl.bind(mainMod .. " + ALT + SHIFT + left",  hl.dsp.window.move({ monitor = "-1" }))
+
+-- Move the whole current workspace to the other monitor with mainMod + SHIFT + left/right
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.workspace.move({ monitor = "+1" }))
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.workspace.move({ monitor = "-1" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
