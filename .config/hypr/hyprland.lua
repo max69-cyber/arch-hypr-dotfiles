@@ -405,6 +405,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    -- Google Chrome: stays fully opaque, unlike everything else (which defaults to 0.89).
+    -- Same compensating multiplier trick as the Super+O "opaque" tag rule above.
+    name    = "chrome-opaque",
+    match   = { class = "^[Gg]oogle-chrome$" },
+    opacity = "1.1236 1.1236 1.1236",
+})
+
+hl.window_rule({
     -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
