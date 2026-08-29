@@ -30,12 +30,14 @@ hl.monitor({
     scale    = "auto",
 })
 
--- Laptop panel
+-- Laptop panel (16", 1920x1200 ~141ppi) vs external (27", 1920x1080 ~82ppi):
+-- at scale=1 everything renders ~1.7x smaller on the laptop than on the monitor.
+-- 1.5 is a common, artifact-free fractional scale that gets it close.
 hl.monitor({
     output   = "eDP-1",
     mode     = "preferred",
     position = "1920x0",
-    scale    = 1,
+    scale    = 1.25,
 })
 
 hl.monitor({
