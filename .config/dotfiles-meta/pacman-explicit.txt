@@ -35,6 +35,7 @@ linux
 linux-firmware
 ly
 mkinitcpio
+mousepad
 nano
 networkmanager
 notion-app-electron
