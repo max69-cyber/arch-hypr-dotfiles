@@ -290,6 +290,10 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + N", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))    -- dwindle only
 
+-- Toggle transparency of the currently focused window (tags "transparent" on/off,
+-- a window_rule below applies opacity to windows carrying that tag)
+hl.bind(mainMod .. " + O", hl.dsp.window.tag({ tag = "transparent" }))
+
 -- Fullscreen (mode 2, no gaps/borders) vs Maximize (mode 1, fills screen but keeps gaps)
 hl.bind(mainMod .. " + F",         hl.dsp.window.fullscreen({ mode = 1 }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
@@ -369,6 +373,13 @@ local suppressMaximizeRule = hl.window_rule({
     suppress_event = "maximize",
 })
 -- suppressMaximizeRule:set_enabled(false)
+
+hl.window_rule({
+    -- Windows tagged "transparent" (via Super+O) get reduced opacity
+    name    = "toggle-transparency",
+    match   = { tag = "transparent" },
+    opacity = "0.89 0.89 0.89",
+})
 
 hl.window_rule({
     -- Fix some dragging issues with XWayland
