@@ -136,8 +136,9 @@ hl.config({
         rounding_power = 2,
 
         -- Change transparency of focused and unfocused windows
-        active_opacity   = 1.0,
-        inactive_opacity = 1.0,
+        active_opacity     = 0.89,
+        inactive_opacity   = 0.89,
+        fullscreen_opacity = 0.89,
 
         shadow = {
             enabled      = true,
@@ -292,9 +293,10 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + N", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))    -- dwindle only
 
--- Toggle transparency of the currently focused window (tags "transparent" on/off,
--- a window_rule below applies opacity to windows carrying that tag)
-hl.bind(mainMod .. " + O", hl.dsp.window.tag({ tag = "transparent" }))
+-- Toggle transparency of the currently focused window: by default all windows
+-- are 0.89 opacity (see decoration.*_opacity below); this tags the window
+-- "opaque" to override back to fully solid, and untags it to restore 0.89
+hl.bind(mainMod .. " + O", hl.dsp.window.tag({ tag = "opaque" }))
 
 -- Fullscreen (mode 2, no gaps/borders) vs Maximize (mode 1, fills screen but keeps gaps)
 hl.bind(mainMod .. " + F",         hl.dsp.window.fullscreen({ mode = 1 }))
@@ -377,10 +379,12 @@ local suppressMaximizeRule = hl.window_rule({
 -- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
-    -- Windows tagged "transparent" (via Super+O) get reduced opacity
+    -- Windows tagged "opaque" (via Super+O) override the global 0.89 opacity back to solid.
+    -- NOTE: window_rule opacity is a MULTIPLIER on top of decoration.active_opacity (0.89),
+    -- so to land on 1.0 we need 1/0.89 here, not 1.0 itself.
     name    = "toggle-transparency",
-    match   = { tag = "transparent" },
-    opacity = "0.89 0.89 0.89",
+    match   = { tag = "opaque" },
+    opacity = "1.1236 1.1236 1.1236",
 })
 
 hl.window_rule({
