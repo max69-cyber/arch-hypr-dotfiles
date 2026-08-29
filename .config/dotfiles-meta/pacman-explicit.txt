@@ -5,14 +5,19 @@ base-devel
 bitwarden-bin
 bluez
 bluez-utils
+bruno-bin
 btrfs-progs
+chatgpt-desktop
 claude-desktop
+docker-desktop
 dunst
 efibootmgr
 fastfetch
 fish
 ghostty
 git
+gnome-calculator
+gnome-calendar
 grim
 gst-plugin-pipewire
 gvfs
@@ -49,6 +54,7 @@ sudo
 thunar
 thunar-archive-plugin
 thunar-volman
+ticktick
 tumbler
 udisks2
 uwsm
