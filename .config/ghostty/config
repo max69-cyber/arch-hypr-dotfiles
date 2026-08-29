@@ -1,0 +1,21 @@
+# Shell
+command = fish
+
+# Font
+font-family = JetBrains Mono
+font-size = 12
+
+# Smart copy: plain Ctrl+C copies ONLY if there's a selection
+# ("performable:" makes the binding conditional on the action being
+# possible at all — with no selection, Ctrl+C falls through as normal
+# input, i.e. still sends SIGINT to interrupt a running command).
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+# Cursor / misc
+cursor-style = block
+mouse-hide-while-typing = true
+
+# Window
+window-decoration = false
+background-opacity = 0.95
