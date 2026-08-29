@@ -359,6 +359,30 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+-- Screenshots (hyprshot captures, pipes raw PNG into satty for annotation/save/copy)
+-- mirrors macOS Cmd+Shift+3/4/5 muscle memory using Print instead of Super
+local screenshotOut = "~/Pictures/Screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png"
+local regionShot  = "bash -c 'hyprshot -m region --raw -s | satty -f - -o \"" .. screenshotOut .. "\" --copy-command wl-copy'"
+local outputShot  = "bash -c 'hyprshot -m output --raw -s | satty -f - -o \"" .. screenshotOut .. "\" --copy-command wl-copy'"
+local windowShot  = "bash -c 'hyprshot -m window --raw -s | satty -f - -o \"" .. screenshotOut .. "\" --copy-command wl-copy'"
+local quickCopy   = "hyprshot -m region --clipboard-only"  -- no editor
+
+hl.bind("Print",             hl.dsp.exec_cmd(regionShot))
+hl.bind("SHIFT + Print",     hl.dsp.exec_cmd(outputShot))
+hl.bind("CTRL + Print",      hl.dsp.exec_cmd(windowShot))
+hl.bind("ALT + Print",       hl.dsp.exec_cmd(quickCopy))
+
+-- Fallback bindings: this laptop's built-in keyboard doesn't send a real "Print"
+-- keysym on Fn+PrtScn (it sends XF86Calculator instead, quirky firmware) — these
+-- work from any keyboard regardless of what the physical Print key does
+hl.bind(mainMod .. " + SHIFT + I",              hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))  -- region -> clipboard
+hl.bind(mainMod .. " + CTRL + SHIFT + I",       hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))  -- fullscreen -> clipboard
+hl.bind(mainMod .. " + ALT + SHIFT + I",        hl.dsp.exec_cmd(regionShot))                             -- region -> satty
+hl.bind(mainMod .. " + ALT + CTRL + SHIFT + I", hl.dsp.exec_cmd(outputShot))                             -- fullscreen -> satty
+
+-- Screen recording: just launches Kooha's own GUI to pick area/mic and start recording
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("kooha"))
+
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -385,6 +409,15 @@ hl.window_rule({
     name    = "toggle-transparency",
     match   = { tag = "opaque" },
     opacity = "1.1236 1.1236 1.1236",
+})
+
+hl.window_rule({
+    -- satty (screenshot annotation): fixed-size floating window, not tiled into the layout
+    -- (90% was too big for full-screen shots, overlapped the top bar)
+    name  = "satty-floating",
+    match = { class = "^com.gabm.satty$" },
+    float = true,
+    size  = "1400 900",
 })
 
 hl.window_rule({
