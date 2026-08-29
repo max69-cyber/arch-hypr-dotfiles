@@ -267,11 +267,11 @@ hl.gesture({
     action = "workspace"
 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
+-- Per-device config, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/
+-- Lower sensitivity on the main mouse (range is -1.0 .. 1.0, 0 = no change)
 hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
+    name        = "r5-ultra-mouse",
+    sensitivity = -0.6,
 })
 
 
