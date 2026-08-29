@@ -46,6 +46,7 @@ pipewire-pulse
 plymouth
 polkit-kde-agent
 power-profiles-daemon
+qoredb-bin
 qt5-wayland
 qt6-wayland
 slurp
