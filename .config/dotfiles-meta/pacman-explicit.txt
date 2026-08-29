@@ -27,8 +27,10 @@ happ-desktop-bin
 htop
 hyprland
 hyprlauncher
+hyprshot
 intel-media-driver
 kitty
+kooha
 libpulse
 libsrtp
 libva-intel-driver
@@ -51,6 +53,7 @@ power-profiles-daemon
 qoredb-bin
 qt5-wayland
 qt6-wayland
+satty
 slurp
 smartmontools
 sof-firmware
@@ -70,6 +73,7 @@ vulkan-intel
 vulkan-nouveau
 vulkan-radeon
 wayle-bin
+wev
 wget
 wireplumber
 wofi
