@@ -397,6 +397,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    -- GNOME Calculator: open floating and small
+    name  = "calculator-floating",
+    match = { class = "^org.gnome.Calculator$" },
+    float = true,
+    size  = "400 300",
+})
+
+hl.window_rule({
     -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
