@@ -388,6 +388,15 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    -- AyuGram: open floating and narrow instead of tiled
+    -- (size matches the current on-screen size at eDP-1 scale 1.25)
+    name  = "ayugram-floating",
+    match = { class = "^com.ayugram.desktop$" },
+    float = true,
+    size  = "709 892",
+})
+
+hl.window_rule({
     -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
