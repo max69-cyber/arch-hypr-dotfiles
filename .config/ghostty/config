@@ -1,6 +1,9 @@
 # Shell
 command = fish
 
+# Current theme
+theme = Gruvbox Material Dark
+
 # Font
 font-family = JetBrains Mono
 font-size = 12
