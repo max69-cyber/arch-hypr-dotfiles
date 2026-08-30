@@ -459,6 +459,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    -- gThumb: stays fully opaque too, like Chrome
+    name    = "gthumb-opaque",
+    match   = { class = "^org.gnome.gThumb$" },
+    opacity = "1.1236 1.1236 1.1236",
+})
+
+hl.window_rule({
     -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
