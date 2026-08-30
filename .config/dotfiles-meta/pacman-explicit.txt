@@ -29,8 +29,11 @@ gthumb
 gvfs
 happ-desktop-bin
 htop
+hypridle
 hyprland
 hyprlauncher
+hyprlock
+hyprpaper
 hyprshot
 intel-media-driver
 kitty
