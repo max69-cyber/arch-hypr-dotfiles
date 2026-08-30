@@ -377,10 +377,10 @@ hl.bind("ALT + Print",       hl.dsp.exec_cmd(quickCopy))
 -- Fallback bindings: this laptop's built-in keyboard doesn't send a real "Print"
 -- keysym on Fn+PrtScn (it sends XF86Calculator instead, quirky firmware) — these
 -- work from any keyboard regardless of what the physical Print key does
-hl.bind(mainMod .. " + SHIFT + I",              hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))  -- region -> clipboard
-hl.bind(mainMod .. " + CTRL + SHIFT + I",       hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))  -- fullscreen -> clipboard
-hl.bind(mainMod .. " + ALT + SHIFT + I",        hl.dsp.exec_cmd(regionShot))                             -- region -> satty
-hl.bind(mainMod .. " + ALT + CTRL + SHIFT + I", hl.dsp.exec_cmd(outputShot))                             -- fullscreen -> satty
+hl.bind(mainMod .. " + X",              hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))  -- region -> clipboard
+hl.bind(mainMod .. " + SHIFT + X",      hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))  -- fullscreen -> clipboard
+hl.bind(mainMod .. " + ALT + X",        hl.dsp.exec_cmd(regionShot))                             -- region -> satty
+hl.bind(mainMod .. " + ALT + SHIFT + X", hl.dsp.exec_cmd(outputShot))                            -- fullscreen -> satty
 
 -- Screen recording: just launches Kooha's own GUI to pick area/mic and start recording
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("kooha"))
