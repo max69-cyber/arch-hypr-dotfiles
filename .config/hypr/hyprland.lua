@@ -75,6 +75,11 @@ local menu        = "hyprlauncher"
 hl.on("hyprland.start", function ()
     hl.exec_cmd("wayle panel start")
     hl.exec_cmd("copyq")  -- clipboard manager: starts monitoring clipboard + tray icon
+    hl.exec_cmd("hypridle")  -- idle daemon: auto-lock/dpms-off/suspend on inactivity
+    hl.exec_cmd("hyprpaper")  -- wallpaper daemon
+    -- hyprpaper (v0.8.4+) has no config file anymore, wallpapers are set live via IPC.
+    -- Small delay so the daemon is ready to accept the request before we call it.
+    hl.exec_cmd("bash -c 'sleep 1; hyprctl hyprpaper wallpaper \"eDP-1,/home/rayxaus/Pictures/Wallpapers/test_wallpaper.jpg,cover\"; hyprctl hyprpaper wallpaper \"HDMI-A-1,/home/rayxaus/Pictures/Wallpapers/test_wallpaper.jpg,cover\"'")
 end)
 
 -------------------------------
@@ -289,6 +294,7 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())       -- force-kill an unresponsive window
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))  -- lock screen
 -- emoji picker (macOS Cmd+Ctrl+Space equivalent). Always copies to clipboard too:
 -- wtype's synthetic typing is unreliable in Chromium/Electron apps (e.g. Claude desktop)
 hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd("rofimoji --selector wofi --typer wtype --action type clipboard"))
