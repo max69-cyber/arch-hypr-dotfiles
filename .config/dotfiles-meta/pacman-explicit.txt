@@ -24,6 +24,7 @@ gnome-calendar
 google-chrome
 grim
 gst-plugin-pipewire
+gthumb
 gvfs
 happ-desktop-bin
 htop
