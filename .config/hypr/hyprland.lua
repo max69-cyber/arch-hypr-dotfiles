@@ -289,6 +289,9 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())       -- force-kill an unresponsive window
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+-- emoji picker (macOS Cmd+Ctrl+Space equivalent). Always copies to clipboard too:
+-- wtype's synthetic typing is unreliable in Chromium/Electron apps (e.g. Claude desktop)
+hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd("rofimoji --selector wofi --typer wtype --action type clipboard"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("copyq toggle"))  -- clipboard history (macOS Cmd+Shift+V equivalent)
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
