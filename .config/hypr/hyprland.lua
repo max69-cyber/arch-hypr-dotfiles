@@ -74,6 +74,7 @@ local menu        = "hyprlauncher"
 -- end)
 hl.on("hyprland.start", function ()
     hl.exec_cmd("wayle panel start")
+    hl.exec_cmd("copyq")  -- clipboard manager: starts monitoring clipboard + tray icon
 end)
 
 -------------------------------
@@ -289,6 +290,7 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())       -- force-kill an unresponsive window
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("copyq toggle"))  -- clipboard history (macOS Cmd+Shift+V equivalent)
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + N", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))    -- dwindle only
@@ -409,6 +411,14 @@ hl.window_rule({
     name    = "toggle-transparency",
     match   = { tag = "opaque" },
     opacity = "1.1236 1.1236 1.1236",
+})
+
+hl.window_rule({
+    -- CopyQ (clipboard history): floating, not tiled into the layout
+    name  = "copyq-floating",
+    match = { class = "^com.github.hluk.copyq$" },
+    float = true,
+    size  = "600 700",
 })
 
 hl.window_rule({

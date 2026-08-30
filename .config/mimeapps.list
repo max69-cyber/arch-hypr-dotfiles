@@ -17,6 +17,7 @@ x-scheme-handler/bruno=bruno.desktop
 x-scheme-handler/codex=chatgpt.desktop
 x-scheme-handler/notion=notion.desktop
 text/plain=org.xfce.mousepad.desktop
+text/x-lua=dev.zed.Zed.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
@@ -32,3 +33,4 @@ application/x-extension-xht=zen.desktop;
 x-scheme-handler/tg=userapp-AyuGram Desktop-K910U3.desktop;
 x-scheme-handler/tonsite=userapp-AyuGram Desktop-F1K2U3.desktop;
 text/plain=org.xfce.mousepad.desktop;
+text/x-lua=dev.zed.Zed.desktop;
